@@ -13,9 +13,11 @@ import Card from 'react-bootstrap/Card';
 import { addToCart } from '../cartSlice';
 import { useDispatch } from 'react-redux';
 
+import { useNavigate } from 'react-router-dom';
 const Home=()=>{
  const [mydata, setMydata]= useState([]);
  const dispatch = useDispatch();
+ const navigate = useNavigate();
 
  const loadData=async()=>{
     
@@ -32,7 +34,8 @@ const Home=()=>{
     return(
         <>
      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={key.image} />
+      <Card.Img variant="top" src={key.image}
+      style={{cursor:"pointer"}} onClick={()=>{navigate(`/prodisplay/${key.id}`)}} />
       <Card.Body>
         <Card.Title> {key.name} </Card.Title>
         <Card.Text>
